@@ -4,11 +4,19 @@ require_once "../src/database.php";
 
 if (isset($_POST['submit'])) {
     $username   = mysqli_escape_string($conn, htmlspecialchars($_POST['username']));
+    $surname   = mysqli_escape_string($conn, htmlspecialchars($_POST['surname']));
+    $function   = mysqli_escape_string($conn, htmlspecialchars($_POST['function']));
     $password   = mysqli_escape_string($conn, htmlspecialchars($_POST['password']));
     
     $errors = [];
     if(empty($username)) {
         $errors['username'] = 'Username cannot be empty';
+    }
+    else if(empty($surname)) {
+        $errors['surname'] = 'Surname cannot be empty';
+    }
+    else if(empty($function)) {
+        $errors['function'] = 'Function cannot be empty';
     }
     else if(empty($password)) {
         $errors['password'] = 'Password cannot be empty';
@@ -67,9 +75,11 @@ if (isset($_POST['submit'])) {
                     <span class="error"><?= isset($errors['username']) ? $errors['username'] : '' ?></span>
                     <input type="password" placeholder="Enter Surname" name="surname" required>
                     <span class="error"><?= isset($errors['surname']) ? $errors['surname'] : '' ?></span>
-                    <input type="password" placeholder="Enter Password" name="password" required>
+                    <input type="password" placeholder="Enter Function" name="function" required>
                     <span class="error"><?= isset($errors['password']) ? $errors['password'] : '' ?></span>
-                    <button type="submit" name="submit">Login</button>
+                    <input type="password" placeholder="Enter Function" name="function" required>
+                    <span class="error"><?= isset($errors['password']) ? $errors['password'] : '' ?></span>
+                    <button type="submit" name="submit">Register</button>
                 </form>
             </div>
         </div>
