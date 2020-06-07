@@ -4,7 +4,8 @@ require_once "../src/database.php";
 
 if (isset($_POST['submit'])) {
     $username   = mysqli_escape_string($conn, htmlspecialchars($_POST['username']));
-    $password   = $_POST['password'];
+    $password   = mysqli_escape_string($conn, htmlspecialchars($_POST['password']));
+    
     $errors = [];
     if(empty($username)) {
         $errors['username'] = 'Username cannot be empty';
