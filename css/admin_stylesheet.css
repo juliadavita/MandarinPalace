@@ -1,0 +1,224 @@
+/* Buttons */
+
+.add-button {
+    background-color: #BE2F2E;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+button {
+    background-color: #BE2F2E;
+    color: white;
+    font-size: 18px;
+    padding: 8px 20px;
+    border: none;
+    cursor: pointer;
+    width: 25%;
+    display: block;
+    margin: 0 auto;
+
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+
+
+/* End Buttons */
+
+
+.login-banner {
+    background-image: url('../img/MP_Restaurant_01_Black.jpg');
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-position: center center;
+    background-size: cover;
+}
+
+.login-background {
+    background: white;
+    width: 500px;
+    height: 36%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    
+}
+
+.login-header {
+    background: black;
+    width: 100%;
+    height: 100px;
+}
+
+.login-logo {
+    display: block;
+    height: 95px;
+    margin: 0 auto;
+    padding: 2px;
+}
+
+.add-button-area{
+    display: block;
+    margin: 20px 68px;
+}
+
+
+.table-header {
+width: 100%;
+}
+
+  input[type=text], input[type=password] {
+    width: 60%;
+    padding: 12px 20px;
+    margin: 25px auto;
+    display: flex;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  .container {
+    padding: 16px;
+  }
+
+.option-background {
+    background: white;
+    width: 37vw;
+    height: 65%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.option-space {
+    padding: 2vw;
+}
+
+  .login-banner {
+    background-image: url('../img/MP_Restaurant_01_Black.jpg');
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-position: center center;
+    background-size: cover;
+}
+
+/* Admin Reservations */
+
+.admin-background {
+    background: white;
+    width: 75vw;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 50px auto;
+    display: table;
+    
+}
+
+.admin-banner {
+    background-image: url('../img/MP_Restaurant_01_Black.jpg');
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    display: flex;
+    background-position: center center;
+    background-size: cover;
+}
+
+.admin-header {
+    background: black;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100px;
+}
+
+.admin-header-imagecontainer {
+    width: 80%;
+    height: 100%;
+}
+
+.admin-header-buttoncontainer {
+    width: 20%;
+    height: 100%;
+}
+
+.date-keeper {
+    width: 94%;
+    height: 30px;
+    /* margin: 15px 0; */
+    background: #BE2F2E;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    padding: 15px 3%;
+    font-weight: bold;
+    font-size: 25px;
+    -webkit-box-shadow: 0px 7px 21px 0px rgba(52, 50, 50, 0.32);
+    -moz-box-shadow:    0px 7px 21px 0px rgba(52, 50, 50, 0.32);
+    box-shadow:         0px 7px 21px 0px rgba(52, 50, 50, 0.32);
+}
+
+
+.table-reserveringen {
+    width: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+}
+
+.inside-button {
+    width: 25px;
+    height: 25px;
+    -webkit-border-radius: 300px;
+    -moz-border-radius: 300px;
+    border-radius: 300px;
+    display: block;
+    background-color: rgb(204, 204, 204);
+    cursor: pointer;
+}
+
+.clicked{
+    background-color: rgb(99, 228, 99);
+}
+
+.space-table {
+    padding: 10px 0;
+}
+
+.time-space-table {
+    padding: 0 0 0 3%;
+}
