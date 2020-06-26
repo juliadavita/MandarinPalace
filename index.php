@@ -1,4 +1,5 @@
-<?php include_once 'header.php'; ?>
+<?php include_once 'header.php';
+    include_once './src/weatherapp.php' ?>
 <div class="content" id="content">
     <div class="logo-space">   
         <img src="img/MP_logo_white.png" class="logo"> 

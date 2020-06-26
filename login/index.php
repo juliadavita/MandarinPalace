@@ -64,7 +64,9 @@ if (isset($_POST['submit'])) {
                     <span class="error"><?= isset($errors['username']) ? $errors['username'] : '' ?></span>
                     <input type="password" placeholder="Enter Password" name="password" required>
                     <span class="error"><?= isset($errors['password']) ? $errors['password'] : '' ?></span>
-                    <button type="submit" name="submit">Login</button>
+                    <button class="add-button" type="submit" name="submit">Login</button>
+                    <a class="add-button" href="register.php">Register</a>
+
                 </form>
             </div>
         </div>

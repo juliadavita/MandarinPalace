@@ -3,51 +3,39 @@ session_start();
 require_once "../src/database.php";
 
 if (isset($_POST['submit'])) {
+
+    //Mysql
     $username   = mysqli_escape_string($conn, htmlspecialchars($_POST['username']));
     $surname   = mysqli_escape_string($conn, htmlspecialchars($_POST['surname']));
     $function   = mysqli_escape_string($conn, htmlspecialchars($_POST['function']));
     $password   = mysqli_escape_string($conn, htmlspecialchars($_POST['password']));
-    
-    $errors = [];
-    if(empty($username)) {
-        $errors['username'] = 'Username cannot be empty';
-    }
-    else if(empty($surname)) {
-        $errors['surname'] = 'Surname cannot be empty';
-    }
-    else if(empty($function)) {
-        $errors['function'] = 'Function cannot be empty';
-    }
-    else if(empty($password)) {
-        $errors['password'] = 'Password cannot be empty';
-    }
-    else
-    {
-        $query = "SELECT * 
-              FROM accounts
-              WHERE username = '$username'";
-        
-        $result = mysqli_query($conn, $query);
-        $user = mysqli_fetch_assoc($result);
-        $errors = [];
-        if ($user)
-        {
-            if (password_verify($password, $user['password'])) {
-                $_SESSION['username'] = $user['password'];
-                header("Location: admin_reservations.php");
-                exit;
-            }
-            else 
-            {
-                $errors['password'] = 'The password is incorrect';
-            }
-        } 
-        else
-        {
-            $errors['username'] = 'This username does not appear to exist.';
+    $password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+    if (empty($username) || empty($surname) || empty($function) || empty($password)){
+        echo('<p>Velden zijn leeg</p>');
+    } else {
+        if (!preg_match("/^[a-zA-Z- \s]*$/", $username)) {
+            echo ('<p>Je voornaam mag alleen letters bevatten</p>');
+        } else if (!preg_match("/^[a-zA-Z- \s]*$/", $surname)) {
+                echo ('<p>Je achternaam mag alleen letters bevatten</p>');
+            } else {
+                session_start();
+                $_SESSION['email'] = $email;
+                $sql = "INSERT INTO accounts(username, surname, function, password) 
+                VALUES ('$username', '$surname', '$function', '$password')";
+
+                $insert = $msqli->query($sql);
+
+                if (!$insert) {
+                    echo $msqli->error;
+                }
+            //     $query = mysqli_query($conn, $sql)
+            //     or die ('Error '.mysqli_error($conn). ' with query' .$sql);
+            //     header('Location: ../login.php');
+            // }
         }
     }
-}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -73,11 +61,11 @@ if (isset($_POST['submit'])) {
                 <form method="post">
                     <input type="text" placeholder="Enter Username" name="username" required>
                     <span class="error"><?= isset($errors['username']) ? $errors['username'] : '' ?></span>
-                    <input type="password" placeholder="Enter Surname" name="surname" required>
+                    <input type="text" placeholder="Enter Surname" name="surname" required>
                     <span class="error"><?= isset($errors['surname']) ? $errors['surname'] : '' ?></span>
-                    <input type="password" placeholder="Enter Function" name="function" required>
-                    <span class="error"><?= isset($errors['password']) ? $errors['password'] : '' ?></span>
-                    <input type="password" placeholder="Enter Function" name="function" required>
+                    <input type="text" placeholder="Enter Function" name="function" required>
+                    <span class="error"><?= isset($errors['function']) ? $errors['function'] : '' ?></span>
+                    <input type="password" placeholder="Enter Password" name="password" required>
                     <span class="error"><?= isset($errors['password']) ? $errors['password'] : '' ?></span>
                     <button type="submit" name="submit">Register</button>
                 </form>
