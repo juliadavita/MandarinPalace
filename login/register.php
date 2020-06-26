@@ -6,35 +6,27 @@ if (isset($_POST['submit'])) {
 
     //Mysql
     $username   = mysqli_escape_string($conn, htmlspecialchars($_POST['username']));
-    $surname   = mysqli_escape_string($conn, htmlspecialchars($_POST['surname']));
-    $function   = mysqli_escape_string($conn, htmlspecialchars($_POST['function']));
     $password   = mysqli_escape_string($conn, htmlspecialchars($_POST['password']));
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-    if (empty($username) || empty($surname) || empty($function) || empty($password)){
+    if (empty($username) || empty($password)){
         echo('<p>Velden zijn leeg</p>');
     } else {
         if (!preg_match("/^[a-zA-Z- \s]*$/", $username)) {
             echo ('<p>Je voornaam mag alleen letters bevatten</p>');
-        } else if (!preg_match("/^[a-zA-Z- \s]*$/", $surname)) {
-                echo ('<p>Je achternaam mag alleen letters bevatten</p>');
-            } else {
+        } else {
                 session_start();
                 $_SESSION['email'] = $email;
-                $sql = "INSERT INTO accounts(username, surname, function, password) 
-                VALUES ('$username', '$surname', '$function', '$password')";
-
-                $insert = $msqli->query($sql);
-
-                if (!$insert) {
-                    echo $msqli->error;
-                }
-            //     $query = mysqli_query($conn, $sql)
-            //     or die ('Error '.mysqli_error($conn). ' with query' .$sql);
-            //     header('Location: ../login.php');
-            // }
+                $sql = "INSERT INTO accounts(username, password) 
+                VALUES ('$username', '$password_hash')";
+                
+                $query = mysqli_query($conn, $sql)
+                or die ('Error '.mysqli_error($conn). ' with query' .$sql);
+                header('Location: ../login');
+            }
         }
     }
+
 
 ?>
 <!DOCTYPE html>
@@ -61,10 +53,6 @@ if (isset($_POST['submit'])) {
                 <form method="post">
                     <input type="text" placeholder="Enter Username" name="username" required>
                     <span class="error"><?= isset($errors['username']) ? $errors['username'] : '' ?></span>
-                    <input type="text" placeholder="Enter Surname" name="surname" required>
-                    <span class="error"><?= isset($errors['surname']) ? $errors['surname'] : '' ?></span>
-                    <input type="text" placeholder="Enter Function" name="function" required>
-                    <span class="error"><?= isset($errors['function']) ? $errors['function'] : '' ?></span>
                     <input type="password" placeholder="Enter Password" name="password" required>
                     <span class="error"><?= isset($errors['password']) ? $errors['password'] : '' ?></span>
                     <button type="submit" name="submit">Register</button>
